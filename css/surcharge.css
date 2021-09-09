@@ -3,3 +3,8 @@
 
 .test{display:none;}
 .test2{display:none;}
+
+
+ul.ql-list.unstyled {
+    display: flex;
+}
