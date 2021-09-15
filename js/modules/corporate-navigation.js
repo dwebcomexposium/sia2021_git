@@ -48,7 +48,7 @@
 	scrolltimer = setTimeout(function(){
 	var currentScrollPosition = window.pageYOffset;
 
-	if(window.pageYOffset >= bannerHeight + 75) {
+	if(window.pageYOffset >= bannerHeight + 120) {
 	  if (currentScrollPosition < lastScrollPosition) {
 	    $menuline.closest('.site-banner').addClass('scroll-down').removeClass('scroll-up');
 	  } else if( currentScrollPosition > lastScrollPosition) {
