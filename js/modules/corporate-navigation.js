@@ -40,28 +40,45 @@
 	$menuline.closest('.site-banner').addClass('is-stuck');
 	var bannerHeightStuck = $menuline.closest('.site-banner').height();
 	$menuline.closest('.site-banner').removeClass('is-stuck');
+	var lastScrollPosition = 0;
 
 	$( window ).on('scroll mousewheel DOMMouseScroll MozMousePixelScroll', { mousewheel: { behavior: 'debounce', delay: 500 } }, function(event){
-		clearTimeout(scrolltimer);
-		scrolltimer = setTimeout(function(){
-			if ( ( $('body').hasClass('front') && $(window).scrollTop() > bannerHeight - bannerHeightStuck ) || ( !$('body').hasClass('front') && $(window).scrollTop() > bannerHeight)   ){
-				$menuline.closest('.site-banner').addClass('is-stuck');
-				if( $('.is-contentPusher').length === 0) {
-					var decal = bannerHeight;
-					$menuline.closest('.site-banner').before('<div class="is-contentPusher" style="height: '+decal+'px" ></div>');
-					//console.log(bannerHeightStuck);
-				}
-				if( $('body.front').length === 0 && /iP(ad|hone|od)/.test(navigator.userAgent)){
-					//correctif iPad
-					$menuline.closest('.site-banner').find('.header-intro').hide().show(0);
-				}
-			}
-			else {
-				$('.is-contentPusher').remove();
-				$menuline.closest('.site-banner').removeClass('is-stuck');
-			}
+	clearTimeout(scrolltimer);
 
-		}, 15);
+	scrolltimer = setTimeout(function(){
+	var currentScrollPosition = window.pageYOffset;
+
+	if(window.pageYOffset >= bannerHeight + 75) {
+	  if (currentScrollPosition < lastScrollPosition) {
+	    $menuline.closest('.site-banner').addClass('scroll-down').removeClass('scroll-up');
+	  } else if( currentScrollPosition > lastScrollPosition) {
+	    $menuline.closest('.site-banner').addClass('scroll-up').removeClass('scroll-down');
+	  }
+	} else {
+	  $menuline.closest('.site-banner').removeClass('scroll-up').removeClass('scroll-down');
+	}
+
+
+	if ( ( $('body').hasClass('front') && $(window).scrollTop() > bannerHeight - bannerHeightStuck + 175) || ( !$('body').hasClass('front') && $(window).scrollTop() > bannerHeight + 175)   ){
+	  $menuline.closest('.site-banner').addClass('is-stuck');
+	  if( $('.is-contentPusher').length === 0) {
+	    var decal = bannerHeight;
+	    $menuline.closest('.site-banner').before('<div class="is-contentPusher" style="height: '+decal+'px" ></div>');
+	    //console.log(bannerHeightStuck);
+	  }
+	  if( $('body.front').length === 0 && /iP(ad|hone|od)/.test(navigator.userAgent)){
+	    //correctif iPad
+	    $menuline.closest('.site-banner').find('.header-intro').hide().show(0);
+	  }
+	}
+	else {
+	  $('.is-contentPusher').remove();
+	  $menuline.closest('.site-banner').removeClass('is-stuck');
+	}
+
+	lastScrollPosition = currentScrollPosition;
+
+	}, 0);
 	});
 
 	$( window ).resize( function(event) {
