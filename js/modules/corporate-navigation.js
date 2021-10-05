@@ -59,7 +59,7 @@
 	}
 
 
-	if ( ( $('body').hasClass('front') && $(window).scrollTop() > bannerHeight - bannerHeightStuck + 175) || ( !$('body').hasClass('front') && $(window).scrollTop() > bannerHeight + 175)   ){
+	if ( $(window).scrollTop() > bannerHeight - bannerHeightStuck + 175 ){
 	  $menuline.closest('.site-banner').addClass('is-stuck');
 	  if( $('.is-contentPusher').length === 0) {
 	    var decal = bannerHeight;
