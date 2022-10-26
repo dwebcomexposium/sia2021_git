@@ -9,7 +9,7 @@
 #zone3 .quicklinks {
     top: 57%;
 }
-@media (max-width: 991.98px)
+@media only screen and (max-width: 991.98px)
 #zone3 .quicklinks {
     top: 87%;
 }
