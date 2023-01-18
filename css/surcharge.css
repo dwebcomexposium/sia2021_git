@@ -17,3 +17,6 @@
 #zone3 .quicklinks .btn-primary .icon.icon-exposants {
     content: url(/theme/sia2021_git/img/picto-exposants.png);
 }
+#zone3 .quicklinks {
+    bottom: 200px;
+}
