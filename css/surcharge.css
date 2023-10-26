@@ -21653,3 +21653,14 @@ body.catalogue #catalog-v2 .CatalogFilterBar-link[data-selected] {
     padding: 10px 0 0;
   }
 }
+
+@media (min-width: 992px)
+.exposants .site-banner.is-stuck .site-banner__logo:after, .node1402621 .site-banner.is-stuck .site-banner__logo:after, .presse .site-banner.is-stuck .site-banner__logo:after, .visiteurs-pro .site-banner.is-stuck .site-banner__logo:after {
+    background-image: url(/theme/sia2021_git/img/LOGOS-SIA2024-HORIZONTAL-BLANC.png);
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 99%;
+    content: "";
+    inset: 0;
+    position: absolute;
+}
